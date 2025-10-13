@@ -1,0 +1,118 @@
+{
+  "nav": {
+    "home": "Home",
+    "analyze": "Text Analyzer",
+    "advisor": "Policy Advisor",
+    "about": "About",
+    "settings": "Settings"
+  },
+  "hero": {
+    "subtitle": "AI-powered compliance analysis platform based on current laws, executive orders, and established policies. Automatically identify potential illegal discrimination, illegal preferences, or expressions that contradict biological sex truth.",
+    "analyze_text": "Analyze Text",
+    "policy_advisor": "Policy Advisor"
+  },
+  "features": {
+    "title": "Core Features",
+    "subtitle": "Two powerful tools to help ensure your content complies with current regulations",
+    "analyzer": {
+      "title": "Text Analyzer",
+      "description": "Upload any text content and get instant compliance analysis with detailed violation detection and correction suggestions.",
+      "cta": "Start Analysis"
+    },
+    "advisor": {
+      "title": "Policy Advisor",
+      "description": "Ask questions about executive orders and compliance requirements. Get instant, accurate answers from our AI assistant.",
+      "cta": "Ask Questions"
+    }
+  },
+  "benefits": {
+    "title": "Why Choose ComplianceLens",
+    "subtitle": "Professional-grade compliance analysis powered by advanced AI technology",
+    "compliance": {
+      "title": "Legal Compliance",
+      "description": "Ensure your content meets all current legal requirements and avoid potential violations."
+    },
+    "accuracy": {
+      "title": "AI-Powered Accuracy",
+      "description": "Leverage advanced AI models to identify subtle compliance issues that might be missed."
+    },
+    "efficiency": {
+      "title": "Time Efficient",
+      "description": "Get instant analysis results and suggestions, saving hours of manual review time."
+    }
+  },
+  "cta": {
+    "title": "Ready to Ensure Compliance?",
+    "subtitle": "Start using ComplianceLens today to protect your organization from compliance risks.",
+    "get_started": "Get Started",
+    "learn_more": "Learn More"
+  },
+  "analyze": {
+    "title": "Text Analyzer",
+    "subtitle": "Upload your text content for compliance analysis",
+    "input_placeholder": "Enter the text you want to analyze for compliance...",
+    "analyze_button": "Analyze Text",
+    "analyzing": "Analyzing...",
+    "results": {
+      "title": "Analysis Results",
+      "verdict": "Compliance Verdict",
+      "compliant": "COMPLIANT",
+      "non_compliant": "NON-COMPLIANT",
+      "violations": "Violations Found",
+      "suggestions": "Correction Suggestions",
+      "summary": "Summary"
+    },
+    "errors": {
+      "empty_text": "Please enter some text to analyze.",
+      "text_too_long": "Text is too long. Please limit to 10,000 characters.",
+      "analysis_failed": "Analysis failed. Please try again."
+    }
+  },
+  "advisor": {
+    "title": "Policy Advisor",
+    "subtitle": "Ask questions about executive orders and compliance requirements",
+    "input_placeholder": "Ask a question about compliance policies...",
+    "send_button": "Send",
+    "thinking": "Thinking...",
+    "welcome_message": "Hello! I'm your Policy Advisor. I can help answer questions about executive orders, compliance requirements, and provide guidance on legal policies. What would you like to know?",
+    "errors": {
+      "empty_question": "Please enter a question.",
+      "question_too_long": "Question is too long. Please limit to 1,000 characters.",
+      "send_failed": "Failed to send message. Please try again."
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 ComplianceLens. All rights reserved.",
+    "links": {
+      "about": "About Us",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "contact": "Contact Us"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "theme_options": {
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    },
+    "save": "Save Settings"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "close": "Close",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous"
+  }
+}

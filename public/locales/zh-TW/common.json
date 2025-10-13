@@ -1,0 +1,118 @@
+{
+  "nav": {
+    "home": "首頁",
+    "analyze": "文本分析器",
+    "advisor": "政策顧問",
+    "about": "關於我們",
+    "settings": "設定"
+  },
+  "hero": {
+    "subtitle": "基於現行法律、行政命令與既定政策的 AI 輔助合規性分析平台。自動識別文本中潛在的非法歧視、非法偏好或與生物性別真相相悖的表達。",
+    "analyze_text": "分析文本",
+    "policy_advisor": "政策顧問"
+  },
+  "features": {
+    "title": "核心功能",
+    "subtitle": "兩個強大的工具，幫助確保您的內容符合現行法規",
+    "analyzer": {
+      "title": "文本分析器",
+      "description": "上傳任何文本內容，獲得即時合規性分析，包含詳細的違規檢測和修正建議。",
+      "cta": "開始分析"
+    },
+    "advisor": {
+      "title": "政策顧問",
+      "description": "詢問有關行政命令和合規要求的問題。從我們的 AI 助手獲得即時、準確的答案。",
+      "cta": "提問"
+    }
+  },
+  "benefits": {
+    "title": "為什麼選擇 ComplianceLens",
+    "subtitle": "由先進 AI 技術驅動的專業級合規性分析",
+    "compliance": {
+      "title": "法律合規",
+      "description": "確保您的內容符合所有現行法律要求，避免潛在違規。"
+    },
+    "accuracy": {
+      "title": "AI 驅動準確性",
+      "description": "利用先進的 AI 模型識別可能被忽略的細微合規問題。"
+    },
+    "efficiency": {
+      "title": "時間效率",
+      "description": "獲得即時分析結果和建議，節省數小時的手動審查時間。"
+    }
+  },
+  "cta": {
+    "title": "準備好確保合規性了嗎？",
+    "subtitle": "立即開始使用 ComplianceLens，保護您的組織免受合規風險。",
+    "get_started": "開始使用",
+    "learn_more": "了解更多"
+  },
+  "analyze": {
+    "title": "文本分析器",
+    "subtitle": "上傳您的文本內容進行合規性分析",
+    "input_placeholder": "輸入您想要分析合規性的文本...",
+    "analyze_button": "分析文本",
+    "analyzing": "分析中...",
+    "results": {
+      "title": "分析結果",
+      "verdict": "合規性裁決",
+      "compliant": "合規",
+      "non_compliant": "不合規",
+      "violations": "發現違規",
+      "suggestions": "修正建議",
+      "summary": "總結"
+    },
+    "errors": {
+      "empty_text": "請輸入一些文本進行分析。",
+      "text_too_long": "文本過長。請限制在 10,000 字符以內。",
+      "analysis_failed": "分析失敗。請重試。"
+    }
+  },
+  "advisor": {
+    "title": "政策顧問",
+    "subtitle": "詢問有關行政命令和合規要求的問題",
+    "input_placeholder": "詢問有關合規政策的問題...",
+    "send_button": "發送",
+    "thinking": "思考中...",
+    "welcome_message": "您好！我是您的政策顧問。我可以幫助回答有關行政命令、合規要求和法律政策指導的問題。您想了解什麼？",
+    "errors": {
+      "empty_question": "請輸入問題。",
+      "question_too_long": "問題過長。請限制在 1,000 字符以內。",
+      "send_failed": "發送消息失敗。請重試。"
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 ComplianceLens. 版權所有。",
+    "links": {
+      "about": "關於我們",
+      "privacy": "隱私政策",
+      "terms": "服務條款",
+      "contact": "聯繫我們"
+    }
+  },
+  "settings": {
+    "title": "設定",
+    "language": "語言",
+    "theme": "主題",
+    "theme_options": {
+      "light": "淺色",
+      "dark": "深色",
+      "system": "系統"
+    },
+    "save": "儲存設定"
+  },
+  "common": {
+    "loading": "載入中...",
+    "error": "錯誤",
+    "success": "成功",
+    "cancel": "取消",
+    "confirm": "確認",
+    "close": "關閉",
+    "save": "儲存",
+    "edit": "編輯",
+    "delete": "刪除",
+    "back": "返回",
+    "next": "下一步",
+    "previous": "上一步"
+  }
+}
