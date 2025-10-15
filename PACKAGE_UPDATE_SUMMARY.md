@@ -73,7 +73,7 @@ After merging this PR, run:
 rm -rf node_modules package-lock.json
 npm install
 
-# Verify build
+# Verify build (requires internet access for Google Fonts)
 npm run build
 
 # Verify lint
@@ -84,3 +84,7 @@ npm run dev
 ```
 
 All commands should complete without errors.
+
+## Note on Build Testing
+
+The build process requires internet access to fetch Google Fonts (Inter font family). In environments without internet access or with restricted domains, the build will fail with a "Failed to fetch Inter from Google Fonts" error. This is expected and will work correctly in production environments with proper internet connectivity.
