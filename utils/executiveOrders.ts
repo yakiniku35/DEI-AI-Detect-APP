@@ -71,7 +71,7 @@ Sec. 8.  General Provisions.  (a)  Nothing in this order shall be construed to i
 (ii)  the functions of the Director of the Office of Management and Budget relating to budgetary, administrative, or legislative proposals.
 (b)  This order shall be implemented consistent with applicable law and subject to the availability of appropriations.
 (c)  This order is not intended to and does not create any right or benefit, substantive or procedural, enforceable at law or in equity by any party against the United States, its departments, agencies, or entities, its officers, employees, or agents, or any other person.
- 
+
 THE WHITE HOUSE,
  January 21, 2025.
 `;
@@ -128,7 +128,7 @@ Sec. 4.  General Provisions.  (a)  Nothing in this order shall be construed to i
 
 (c)  This order is not intended to, and does not, create any right or benefit, substantive or procedural, enforceable at law or in equity by any party against the United States, its departments, agencies, or entities, its officers, employees, or agents, or any other person.
 
-THE WHITE HOUSE,    
+THE WHITE HOUSE,
 
 January 20, 2025.
 `;
