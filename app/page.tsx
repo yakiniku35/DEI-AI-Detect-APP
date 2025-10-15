@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -82,16 +83,21 @@ export default function Home() {
             </CardHeader>
             <CardContent className="space-y-4">
               <Textarea
-                placeholder="在此輸入或貼上文本..."
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-                className="min-h-[200px] resize-none"
+              	placeholder="在此輸入或貼上文本..."
+              	value={text}
+              	onChange={(e) => setText(e.target.value)}
+              	className="min-h-[200px] resize-none bg-white text-black placeholder:text-gray-500 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
               />
               <div className="flex items-center justify-between">
                 <span className="text-sm text-muted-foreground">
                   {text.length} 字符 · {text.split(/\s+/).filter(Boolean).length} 字詞
                 </span>
-                <Button onClick={analyzeText} disabled={!text.trim() || isAnalyzing} size="lg">
+                <Button
+                	onClick={analyzeText}
+                	disabled={!text.trim() || isAnalyzing}
+                	size="lg"
+                	className="focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary"
+                >
                   {isAnalyzing ? (
                     <>
                       <Spinner className="mr-2" />
@@ -101,6 +107,36 @@ export default function Home() {
                     "開始檢測"
                   )}
                 </Button>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Quick Navigation */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">快速導覽</CardTitle>
+              <CardDescription>前往常用功能頁面</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                <Link href="/analyze" className="">
+                  <Button variant="secondary" className="w-full justify-center focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary">分析頁 /analyze</Button>
+                </Link>
+                <Link href="/advisor">
+                  <Button variant="secondary" className="w-full justify-center focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary">政策顧問 /advisor</Button>
+                </Link>
+                <Link href="/about">
+                  <Button variant="secondary" className="w-full justify-center focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary">關於我們 /about</Button>
+                </Link>
+                <Link href="/settings">
+                  <Button variant="secondary" className="w-full justify-center focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary">設定 /settings</Button>
+                </Link>
+                <Link href="/signin">
+                  <Button variant="secondary" className="w-full justify-center focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary">登入 /signin</Button>
+                </Link>
+                <Link href="/contact">
+                  <Button variant="secondary" className="w-full justify-center focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary">聯絡我們 /contact</Button>
+                </Link>
               </div>
             </CardContent>
           </Card>
