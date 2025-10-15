@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import plugin from 'tailwindcss/plugin'
 
 const config: Config = {
   content: [
@@ -54,6 +55,29 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  // Ensure commonly-used custom utilities are always generated in CI
+  safelist: [
+    'border-border',
+    'bg-background',
+    'text-foreground',
+    'ring-ring',
+    'ring-offset-background',
+    'border-input',
+  ],
+  plugins: [
+    plugin(function ({ addUtilities }) {
+      addUtilities(
+        {
+          '.border-border': { 'border-color': 'rgb(var(--border))' },
+          '.bg-background': { 'background-color': 'rgb(var(--background))' },
+          '.text-foreground': { color: 'rgb(var(--foreground))' },
+          '.ring-ring': { '--tw-ring-color': 'rgb(var(--ring))' },
+          '.ring-offset-background': { '--tw-ring-offset-color': 'rgb(var(--background))' },
+          '.border-input': { 'border-color': 'rgb(var(--input))' },
+        },
+        { variants: ['responsive', 'hover'] }
+      )
+    }),
+  ],
 }
 export default config

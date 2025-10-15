@@ -112,3 +112,13 @@ body {
     @apply bg-yellow-100 dark:bg-yellow-900/30 border-b-2 border-yellow-500 cursor-pointer transition-colors hover:bg-yellow-200 dark:hover:bg-yellow-900/50;
   }
 }
+
+/* Utilities fallback: ensure these classes exist even if Tailwind JIT misses them */
+@layer utilities {
+  .border-border { border-color: rgb(var(--border)); }
+  .bg-background { background-color: rgb(var(--background)); }
+  .text-foreground { color: rgb(var(--foreground)); }
+  .ring-ring { --tw-ring-color: rgb(var(--ring)); }
+  .ring-offset-background { --tw-ring-offset-color: rgb(var(--background)); }
+  .border-input { border-color: rgb(var(--input)); }
+}
