@@ -23,26 +23,36 @@ export default function Home() {
 
     setIsAnalyzing(true)
 
-    // 模擬 AI 檢測（實際應用中應該調用真實的 API）
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    try {
+      const response = await fetch('/api/ai-detect', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ text }),
+      })
 
-    // 簡單的啟發式檢測（實際應用中應該使用真實的 AI 模型）
-    const wordCount = text.split(/\s+/).length
-    const avgWordLength = text.replace(/\s/g, "").length / wordCount
-    const hasRepetitivePatterns = /(.{20,})\1/.test(text)
+      if (!response.ok) {
+        throw new Error('分析請求失敗')
+      }
 
-    const aiScore = Math.min(
-      100,
-      (avgWordLength > 6 ? 30 : 0) + (hasRepetitivePatterns ? 40 : 0) + (wordCount > 100 ? 30 : 20),
-    )
-
-    setResult({
-      isAI: aiScore > 50,
-      confidence: aiScore,
-      details: aiScore > 50 ? "此文本可能由 AI 生成，具有典型的 AI 寫作特徵。" : "此文本看起來像是人類撰寫的內容。",
-    })
-
-    setIsAnalyzing(false)
+      const data = await response.json()
+      
+      setResult({
+        isAI: data.isAI,
+        confidence: data.confidence,
+        details: data.details,
+      })
+    } catch (error) {
+      console.error('AI 檢測錯誤:', error)
+      setResult({
+        isAI: false,
+        confidence: 0,
+        details: '分析時發生錯誤，請稍後再試。',
+      })
+    } finally {
+      setIsAnalyzing(false)
+    }
   }
 
   return (
