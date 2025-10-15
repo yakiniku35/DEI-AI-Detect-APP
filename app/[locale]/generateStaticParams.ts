@@ -1,5 +1,3 @@
-export default function generateStaticParams() {
-  return [{ locale: 'en' }, { locale: 'zh-TW' }]
-}
+// removed: now handled in app/[locale]/page.tsx
 
 
