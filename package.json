@@ -17,6 +17,7 @@
     "next-auth": "4.24.11",
     "next-i18next": "^15.2.0",
     "openai": "^4.20.1",
+    "@google/generative-ai": "^0.21.0",
     "react": "^18",
     "react-dom": "^18",
     "react-i18next": "^13.5.0",
