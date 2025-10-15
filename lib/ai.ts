@@ -89,10 +89,10 @@ ${EXECUTIVE_ORDERS_CONTEXT}
     { role: 'user', parts: [{ text: system }] },
     ...history.map((h) => ({ role: h.role, parts: [{ text: h.content }] })),
     { role: 'user', parts: [{ text: question }] },
-  ] as const
+  ]
 
   const model = getModel()
-  const result = await model.generateContent({ contents: messages })
+  const result = await model.generateContent({ contents: messages as any })
   const answer = result.response.text()
 
   // Simple citation extractor similar to previous
