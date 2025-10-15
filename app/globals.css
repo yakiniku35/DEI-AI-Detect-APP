@@ -115,10 +115,7 @@ body {
 
 /* Utilities fallback: ensure these classes exist even if Tailwind JIT misses them */
 @layer utilities {
-  .border-border { border-color: rgb(var(--border)); }
-  .bg-background { background-color: rgb(var(--background)); }
-  .text-foreground { color: rgb(var(--foreground)); }
-  .ring-ring { --tw-ring-color: rgb(var(--ring)); }
-  .ring-offset-background { --tw-ring-offset-color: rgb(var(--background)); }
-  .border-input { border-color: rgb(var(--input)); }
+  /* moved to styles/utilities.css - import that file instead */
 }
+
+@import '../styles/utilities.css';

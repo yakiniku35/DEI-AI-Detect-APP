@@ -1,0 +1,7 @@
+/* utilities fallback: explicit utility classes for stable CI builds */
+.border-border { border-color: rgb(var(--border)); }
+.bg-background { background-color: rgb(var(--background)); }
+.text-foreground { color: rgb(var(--foreground)); }
+.ring-ring { --tw-ring-color: rgb(var(--ring)); }
+.ring-offset-background { --tw-ring-offset-color: rgb(var(--background)); }
+.border-input { border-color: rgb(var(--input)); }
