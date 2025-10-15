@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useRef, useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
@@ -18,6 +18,26 @@ export default function Home() {
     confidence: number
     details: string
   } | null>(null)
+
+  const fileInputRef = useRef<HTMLInputElement | null>(null)
+
+  const handleSelectFile = () => {
+    fileInputRef.current?.click()
+  }
+
+  const handleFileChange: React.ChangeEventHandler<HTMLInputElement> = async (e) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+    try {
+      const textContent = await file.text()
+      setText((prev) => (prev ? prev + "\n\n" + textContent : textContent))
+    } catch (err) {
+      console.error('讀取檔案失敗', err)
+    } finally {
+      // reset value to allow re-upload same file
+      e.target.value = ""
+    }
+  }
 
   const analyzeText = async () => {
     if (!text.trim()) return
@@ -63,10 +83,10 @@ export default function Home() {
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-4">
             <Brain className="w-12 h-12 text-primary" />
-            <h1 className="text-4xl md:text-5xl font-bold text-balance">DEI AI 檢測器</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-balance">教師用 DEI 合規檢測器</h1>
           </div>
           <p className="text-lg text-muted-foreground text-balance max-w-2xl mx-auto">
-            使用先進的 AI 技術檢測文本是否由人工智能生成
+            協助教師快速檢測教材/講義是否涉及被限制的 DEI、性別意識形態或能源政策等相關內容，並提供合規建議。
           </p>
         </div>
 
@@ -77,7 +97,7 @@ export default function Home() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Shield className="w-5 h-5" />
-                輸入要檢測的文本
+                輸入或上傳要檢測的文本
               </CardTitle>
               <CardDescription>貼上任何文本內容，我們將分析它是否由 AI 生成</CardDescription>
             </CardHeader>
@@ -88,6 +108,28 @@ export default function Home() {
               	onChange={(e) => setText(e.target.value)}
               	className="min-h-[200px] resize-none bg-white text-black placeholder:text-gray-500 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
               />
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                <div className="text-sm text-muted-foreground">
+                  支援匯入檔案：.txt、.md（將自動載入到上方文字框）
+                </div>
+                <div className="flex gap-2">
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept=".txt,.md,.markdown,text/plain"
+                    className="hidden"
+                    onChange={handleFileChange}
+                  />
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={handleSelectFile}
+                    className="focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary"
+                  >
+                    上傳檔案
+                  </Button>
+                </div>
+              </div>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-muted-foreground">
                   {text.length} 字符 · {text.split(/\s+/).filter(Boolean).length} 字詞
