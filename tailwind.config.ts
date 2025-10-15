@@ -9,12 +9,30 @@ const config: Config = {
   darkMode: 'class',
   theme: {
     extend: {
+      // CSS variable based utility colors (used by globals.css @apply)
+      // These map utility names like bg-background, text-foreground, border-border
+      // to the CSS variables defined in app/globals.css. Keep the original
+      // color palette as a fallback.
       colors: {
+        background: 'rgb(var(--background) / <alpha-value>)',
+        foreground: 'rgb(var(--foreground) / <alpha-value>)',
         primary: {
           DEFAULT: '#0056B3',
           light: '#ADD8E6',
         },
+        'primary-foreground': 'rgb(var(--primary-foreground) / <alpha-value>)',
+        secondary: '#ADD8E6',
+        'secondary-foreground': 'rgb(var(--secondary-foreground) / <alpha-value>)',
+        muted: 'rgb(var(--muted) / <alpha-value>)',
+        'muted-foreground': 'rgb(var(--muted-foreground) / <alpha-value>)',
         accent: '#ADD8E6',
+        'accent-foreground': 'rgb(var(--accent-foreground) / <alpha-value>)',
+        destructive: '#EF4444',
+        'destructive-foreground': 'rgb(var(--destructive-foreground) / <alpha-value>)',
+        border: 'rgb(var(--border) / <alpha-value>)',
+        input: 'rgb(var(--input) / <alpha-value>)',
+        ring: 'rgb(var(--ring) / <alpha-value>)',
+        // fallback palette
         neutral: {
           50: '#F8F8F8',
           100: '#F5F5F5',
