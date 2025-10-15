@@ -50,17 +50,38 @@ body {
 }
 
 @layer base {
-  * {
-    @apply border-border;
+  /* Explicitly provide utility fallbacks so Tailwind's JIT missing class
+     generation doesn't break builds on some CI environments. These map to
+     the CSS variables defined above. */
+  .border-border {
+    border-color: rgb(var(--border));
   }
+
+  .bg-background {
+    background: rgb(var(--background));
+  }
+
+  .text-foreground {
+    color: rgb(var(--foreground));
+  }
+
+  /* Apply the utilities to base elements where appropriate */
+  * {
+    box-sizing: border-box;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    background: rgb(var(--background));
+    color: rgb(var(--foreground));
   }
 }
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background;
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 disabled:opacity-50 disabled:pointer-events-none;
+    /* fallback ring utilities */
+    --tw-ring-color: rgb(var(--ring));
+    --tw-ring-offset-color: rgb(var(--background));
   }
   
   .btn-primary {
