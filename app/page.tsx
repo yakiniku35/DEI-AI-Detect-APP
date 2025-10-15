@@ -13,11 +13,19 @@ import { Brain, Shield, AlertCircle, CheckCircle2 } from "lucide-react"
 export default function Home() {
   const [text, setText] = useState("")
   const [isAnalyzing, setIsAnalyzing] = useState(false)
-  const [result, setResult] = useState<{
-    isAI: boolean
-    confidence: number
-    details: string
-  } | null>(null)
+  const [result, setResult] = useState<
+    | {
+        verdict: 'YES' | 'NO'
+        summary: string
+        violations: Array<{
+          text: string
+          reason: string
+          section: string
+          suggestion: string
+        }>
+      }
+    | null
+  >(null)
 
   const fileInputRef = useRef<HTMLInputElement | null>(null)
 
@@ -45,7 +53,7 @@ export default function Home() {
     setIsAnalyzing(true)
 
     try {
-      const response = await fetch('/api/ai-detect', {
+      const response = await fetch('/api/analyze-text', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -58,19 +66,14 @@ export default function Home() {
       }
 
       const data = await response.json()
-      
       setResult({
-        isAI: data.isAI,
-        confidence: data.confidence,
-        details: data.details,
+        verdict: data.verdict,
+        summary: data.summary,
+        violations: Array.isArray(data.violations) ? data.violations : [],
       })
     } catch (error) {
       console.error('AI 檢測錯誤:', error)
-      setResult({
-        isAI: false,
-        confidence: 0,
-        details: '分析時發生錯誤，請稍後再試。',
-      })
+      setResult(null)
     } finally {
       setIsAnalyzing(false)
     }
@@ -188,40 +191,47 @@ export default function Home() {
             <Card className="border-2">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  {result.isAI ? (
-                    <AlertCircle className="w-5 h-5 text-destructive" />
-                  ) : (
+                  {result.verdict === 'YES' ? (
                     <CheckCircle2 className="w-5 h-5 text-green-500" />
+                  ) : (
+                    <AlertCircle className="w-5 h-5 text-destructive" />
                   )}
-                  檢測結果
+                  合規分析結果
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-lg font-medium">檢測狀態：</span>
-                  <Badge variant={result.isAI ? "destructive" : "default"} className="text-base px-4 py-1">
-                    {result.isAI ? "AI 生成" : "人類撰寫"}
+                  <span className="text-lg font-medium">是否合規：</span>
+                  <Badge
+                    variant={result.verdict === 'YES' ? 'default' : 'destructive'}
+                    className="text-base px-4 py-1"
+                  >
+                    {result.verdict === 'YES' ? 'YES（合規）' : 'NO（不合規）'}
                   </Badge>
                 </div>
 
                 <div className="space-y-2">
-                  <div className="flex items-center justify-between text-sm">
-                    <span>信心度：</span>
-                    <span className="font-medium">{result.confidence}%</span>
-                  </div>
-                  <div className="w-full bg-secondary rounded-full h-3 overflow-hidden">
-                    <div
-                      className={`h-full transition-all duration-500 ${
-                        result.isAI ? "bg-destructive" : "bg-green-500"
-                      }`}
-                      style={{ width: `${result.confidence}%` }}
-                    />
-                  </div>
+                  <span className="text-sm font-medium">摘要：</span>
+                  <Alert>
+                    <AlertDescription>{result.summary}</AlertDescription>
+                  </Alert>
                 </div>
 
-                <Alert>
-                  <AlertDescription>{result.details}</AlertDescription>
-                </Alert>
+                {result.violations?.length > 0 && (
+                  <div className="space-y-3">
+                    <div className="text-sm font-medium">違規細節（{result.violations.length}）</div>
+                    <div className="space-y-3">
+                      {result.violations.map((v, idx) => (
+                        <div key={idx} className="rounded-md border p-3 bg-background/50">
+                          <div className="text-sm"><span className="font-medium">段落：</span>{v.text}</div>
+                          <div className="text-sm mt-1"><span className="font-medium">原因：</span>{v.reason}</div>
+                          <div className="text-sm mt-1"><span className="font-medium">依據：</span>{v.section}</div>
+                          <div className="text-sm mt-1"><span className="font-medium">建議：</span>{v.suggestion}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </CardContent>
             </Card>
           )}
